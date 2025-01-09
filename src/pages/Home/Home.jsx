@@ -1,26 +1,9 @@
-import data from "../../data.json";
-import Card from "../components/Card";
+import data from "../../../data.json";
+import Card from "../../components/Card";
 import { useEffect, useState } from "react";
 
-export default function Home() {
-  const [countries, setCountries] = useState([]);
-  const [filteredCountries, setFilteredCountries] = useState([]);
-  const [error, setError] = useState(null);
-
-  const getCountriesData = () => {
-    fetch(
-      "https://restcountries.com/v3.1/all?fields=name,flags,population,capital,region"
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        const sortedData = data.sort((a, b) =>
-          a.name.common.toLowerCase().localeCompare(b.name.common.toLowerCase())
-        );
-        setCountries(sortedData);
-        setFilteredCountries(sortedData);
-      })
-      .catch((error) => setError("Error: " + error.message));
-  };
+export default function Home({ countries }) {
+  const [filteredCountries, setFilteredCountries] = useState(countries);
 
   const handleSearch = (e) => {
     const searchTerm = e.target.value;
@@ -35,13 +18,9 @@ export default function Home() {
       setFilteredCountries(filtered);
     }
   };
-
-  useEffect(() => {
-    getCountriesData();
-  }, []);
   return (
     <main>
-      <div class="menu">
+      <div className="menu">
         <input
           name="searchBar"
           type="text"

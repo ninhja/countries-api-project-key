@@ -2,21 +2,18 @@
 
 :root {
   --dark-blue-1: hsl(209, 23%, 22%);
---dark-blue-2: hsl(207, 26%, 17%);
---dark-blue-3: hsl(200, 15%, 8%); 
---dark-grey: hsl(0, 0%, 52%);
---light-grey: hsl(0, 0%, 98%);
---white: hsl(0, 0%, 100%) 
+  --dark-blue-2: hsl(207, 26%, 17%);
+  --dark-blue-3: hsl(200, 15%, 8%);
+  --dark-grey: hsl(0, 0%, 52%);
+  --light-grey: hsl(0, 0%, 98%);
+  --white: hsl(0, 0%, 100%);
 
   --border-radius: 5px;
   --box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.0294);
+  --box-shadow-hover: 0px 0px 14px 7px rgba(0, 0, 0, 0.12);
 
   /* - Dark Blue (Dark Mode Elements): hsl(209, 23%, 22%)
-- Very Dark Blue (Dark Mode Background): hsl(207, 26%, 17%)
-- Very Dark Blue (Light Mode Text): hsl(200, 15%, 8%)
-- Dark Gray (Light Mode Input): hsl(0, 0%, 52%)
-- Very Light Gray (Light Mode Background): hsl(0, 0%, 98%)
-- White (Dark Mode Text & Light Mode Elements): hsl(0, 0%, 100%) */
+- Very Dark Blue (Dark Mode Background): hsl(207, 26%, 17%) */
 }
 
 * {
@@ -24,7 +21,8 @@
 }
 
 body {
-  background-color: #f5f5f5;
+  background-color: var(--light-grey);
+  color: var(--dark-blue-3);
   font-family: "Nunito Sans";
   font-size: 1rem;
   margin: 0;
@@ -39,7 +37,7 @@ nav,
 main {
   max-width: 1600px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 1.2rem;
 }
 
 nav {
@@ -49,7 +47,7 @@ nav {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 1rem;
   margin: 0;
 }
 
@@ -69,9 +67,14 @@ a {
 .Card {
   border-radius: var(--border-radius);
   width: 100%;
+  height: 100%;
 
   background-color: white;
   box-shadow: var(--box-shadow);
+}
+
+.Card:hover {
+  box-shadow: var(--box-shadow-hover);
 }
 
 .Card img {
@@ -99,23 +102,45 @@ input,
 button {
   font-family: "Nunito Sans";
   font-size: 1rem;
-}
-
-input {
-  padding: 1.2rem 1.6rem;
-  width: min(100%, 480px);
 
   border: none;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
 }
 
+input {
+  color: var(--dark-grey);
+  padding: 1.2rem 1.6rem;
+  width: min(100%, 480px);
+}
+
+input[name="bio"] {
+  min-height: 200px;
+}
+
 button[type="submit"] {
   width: fit-content;
-  padding: 0.5rem 2rem;
+  padding: 0.6rem 2rem;
+
+  color: var(--white);
+  background-color: #7672ce;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #544ec1;
 }
 
 @media (min-width: 540px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  nav,
+  main {
+    padding: 2rem;
+  }
+
   .card-container {
     grid-template-columns: 1fr 1fr;
     justify-items: start;
