@@ -56,6 +56,12 @@ a {
   color: black;
 }
 
+img {
+  border-radius: 8px;
+  max-width: 100%;
+  box-shadow: var(--box-shadow);
+}
+
 .card-container {
   display: grid;
   grid-template-columns: 1fr; /* Default for mobile */
@@ -79,11 +85,9 @@ a {
 
 .Card img {
   border-radius: 8px 8px 0 0;
-  max-width: 100%;
-  box-shadow: var(--box-shadow);
 }
 
-.Card .country-info {
+.country-info {
   padding: 0 1.5rem 2rem;
 }
 
@@ -99,13 +103,15 @@ form {
 }
 
 input,
-button {
+button,
+a.button {
   font-family: "Nunito Sans";
   font-size: 1rem;
 
   border: none;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
+  background-color: white;
 }
 
 input {
@@ -118,17 +124,34 @@ input[name="bio"] {
   min-height: 200px;
 }
 
-button[type="submit"] {
+button,
+a.button {
   width: fit-content;
   padding: 0.6rem 2rem;
+  cursor: pointer;
+  display: inline-block;
+  margin: 1rem 0;
+}
 
+button:hover,
+a.button:hover {
+  background-color: hsl(0, 0%, 94%);
+}
+
+button[type="submit"] {
   color: var(--white);
   background-color: #7672ce;
-  cursor: pointer;
+  margin: 0;
 }
 
 button[type="submit"]:hover {
   background-color: #544ec1;
+}
+
+.IndividualCountry {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 2rem 0;
 }
 
 @media (min-width: 540px) {
@@ -150,6 +173,10 @@ button[type="submit"]:hover {
 @media (min-width: 800px) {
   .card-container {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .IndividualCountry {
+    grid-template-columns: 2fr 1fr;
   }
 }
 

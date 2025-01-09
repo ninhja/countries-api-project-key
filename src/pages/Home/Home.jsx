@@ -1,9 +1,29 @@
-import data from "../../../data.json";
+import { useState, useEffect } from "react";
 import Card from "../../components/Card";
-import { useEffect, useState } from "react";
 
-export default function Home({ countries }) {
+export default function Home() {
+  const [countries, setCountries] = useState([]);
   const [filteredCountries, setFilteredCountries] = useState(countries);
+  const [error, setError] = useState(null);
+
+  const getCountriesData = () => {
+    fetch(
+      "https://restcountries.com/v3.1/all?fields=name,flags,population,capital,region"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        const sortedData = data.sort((a, b) =>
+          a.name.common.toLowerCase().localeCompare(b.name.common.toLowerCase())
+        );
+        setCountries(sortedData);
+        setFilteredCountries(sortedData);
+      })
+      .catch((error) => setError("Error: " + error.message));
+  };
+
+  useEffect(() => {
+    getCountriesData();
+  }, []);
 
   const handleSearch = (e) => {
     const searchTerm = e.target.value;
