@@ -32,7 +32,7 @@ export default function IndividualCountry() {
         <div className="IndividualCountry">
           <img src={country.flags.svg} alt={country.flags.alt} />
           <div className="country-info">
-            <h3>{country.name.common}</h3>
+            <h2>{country.name.common}</h2>
 
             <p>Population: {country.population.toLocaleString()}</p>
             <p>Capital: {country.capital}</p>

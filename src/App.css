@@ -149,8 +149,9 @@ button[type="submit"]:hover {
 }
 
 .IndividualCountry {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 2rem;
   margin: 2rem 0;
 }
 
@@ -173,10 +174,6 @@ button[type="submit"]:hover {
 @media (min-width: 800px) {
   .card-container {
     grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  .IndividualCountry {
-    grid-template-columns: 2fr 1fr;
   }
 }
 
