@@ -18,6 +18,15 @@ export default function Form() {
     //   alert("Please enter your full name.");
     //   return;
     // }
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: JSON.stringify(formData),
+    })
+      .then(() => console.log("Form successfully submitted"))
+      .catch((error) => alert(error));
+
     setUserInfo(formData);
     setFormData(emptyFormState); // reset formData
   };
