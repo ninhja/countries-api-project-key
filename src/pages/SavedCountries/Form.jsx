@@ -68,6 +68,8 @@ export default function Form() {
           onChange={handleInputChange}
           placeholder="Bio"
         ></input>
+        <input type="hidden" name="form-name" value="name_of_my_form" />
+
         <button type="submit">Submit</button>
       </form>
     </section>
