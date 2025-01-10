@@ -25,7 +25,12 @@ export default function Form() {
   return (
     <section className="form-wrapper">
       <h2>My Profile</h2>
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={handleSubmit}
+        data-netlify="true"
+        name="my-profile"
+        method="POST"
+      >
         <input
           type="text"
           name="fullName"

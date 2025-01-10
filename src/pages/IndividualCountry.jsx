@@ -37,6 +37,7 @@ export default function IndividualCountry() {
             <p>Population: {country.population.toLocaleString()}</p>
             <p>Capital: {country.capital}</p>
             <p>Region: {country.region}</p>
+
             <button>Save</button>
           </div>
         </div>
