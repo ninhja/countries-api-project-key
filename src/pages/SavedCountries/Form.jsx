@@ -11,6 +11,14 @@ export default function Form() {
     setFormData({ ...formData, [name]: value });
   };
 
+  const encode = (data) => {
+    return Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+      )
+      .join("&");
+  };
+
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
