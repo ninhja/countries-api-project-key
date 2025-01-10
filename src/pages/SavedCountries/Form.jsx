@@ -14,15 +14,10 @@ export default function Form() {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if (!formData.e.target.value) {
-    //   alert("Please enter your full name.");
-    //   return;
-    // }
-
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: JSON.stringify(formData),
+      body: encode({ "form-name": "my-profile", ...formData }),
     })
       .then(() => console.log("Form successfully submitted"))
       .catch((error) => alert(error));
